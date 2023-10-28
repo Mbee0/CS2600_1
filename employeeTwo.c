@@ -30,11 +30,11 @@ static int compareEmployeeName(const void *targetPtr, PtrToConstEmployee tableVa
 }
 static int compareEmployeePhone(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
-    return strcmp((char *)targetPtr, tableValuePtr->phone); // const void *targetPtr ==> typecast as char pointer then pass into strcmp()
+    return strcmp((char *)targetPtr, tableValuePtr->phone);
 }
 static int compareEmployeeSalary(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
-    return *(double *)targetPtr != tableValuePtr->salary; // const void *targetPtr ==> typecast as int pointer then dereference
+    return *(double *)targetPtr != tableValuePtr->salary;
 }
 
 // These are called wrappers. These functions are what you will use in your main!!!
@@ -48,9 +48,9 @@ PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int size, char *name)
 }
 PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int size, char *phone)
 {
-    return searchEmployeeTable(ptr, size, phone, compareEmployeeName);
+    return searchEmployeeTable(ptr, size, phone, compareEmployeePhone);
 }
-PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int size, double salary)
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int size, double salary)
 {
-    return searchEmployeeTable(ptr, size, &salary, compareEmployeeNumber);
+    return searchEmployeeTable(ptr, size, &salary, compareEmployeeSalary);
 }
